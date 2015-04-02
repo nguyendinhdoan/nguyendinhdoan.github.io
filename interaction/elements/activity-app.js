@@ -1,6 +1,7 @@
 Polymer({
-  ready: function() {
+  created: function() {
     this.activities = [];
+    this.route = this.route || 'Common_ChooseDifferentWord';
   },
 
   onResponseActivityData: function(e, detail) {
@@ -45,9 +46,5 @@ Polymer({
     // Append DOM into activity-list
     wrapperNode.appendChild(activityNode);
     this.$.activityPages.appendChild(wrapperNode);
-
-    if (activity.type == 'Common_ChooseDifferentWord') {
-      this.$.activityPages.selected = activity.type;
-    }
   }
 });

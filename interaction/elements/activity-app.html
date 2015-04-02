@@ -16,10 +16,10 @@
     <core-scaffold id="scaffold">
       <nav>
         <core-toolbar><span>My menu</span></core-toolbar>
-        <core-menu id="menu" selected="0" valueattr="name" selectedModel="{{selectedActivity}}" on-core-select="{{selectMenu}}">
+        <core-menu id="menu" selected="{{route}}" on-core-select="{{selectMenu}}">
           <template repeat="{{activity, i in activities}}">
             <paper-item name="{{activity.type}}">
-              <core-icon icon="label{{selectedActivity.activity == activity ? '': '-outline'}}"></core-icon>
+              <core-icon icon="label{{route == activity.type ? '': '-outline'}}"></core-icon>
               {{activity.type | shortName}}
             </paper-item>
           </template>
@@ -32,7 +32,7 @@
       </core-toolbar>
       <div layout horizontal center-center fit>
         <!-- Activities -->
-        <core-animated-pages id="activityPages" selected="{{selectedActivity.activity.type}}" valueattr="name" transitions="slide-from-bottom" fit>
+        <core-animated-pages id="activityPages" selected="{{route}}" transitions="slide-from-bottom" fit>
           <!-- Run Javascript to insert dynamically activity elements -->
         </core-animated-pages>
       </div>
