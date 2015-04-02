@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="activity-app.css">
     <!-- Load multi activity -->
     <template repeat="{{activity in activityListInfo}}">
-      <core-ajax auto url="http://ucan.vn/course/ajax/get" params='{"id":"{{activity.id}}"}' handleAs="json" on-core-response="{{onResponseActivityData}}"></core-ajax>
+      <core-ajax auto url="http://www.ucan.vn/course/ajax/get" params='{"id":"{{activity.id}}"}' handleAs="json" on-core-response="{{onResponseActivityData}}"></core-ajax>
     </template>
     <core-scaffold id="scaffold">
       <nav>
