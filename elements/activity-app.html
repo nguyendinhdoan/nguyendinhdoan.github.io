@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/core-scaffold/core-scaffold.html">
+<link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../bower_components/core-item/core-item.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/core-selector/core-selector.html">
+<link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/slide-from-bottom.html">
+<polymer-element name="activity-app" attributes="activityListInfo">
+  <template>
+    <link rel="stylesheet" href="activity-app.css">
+    <!-- Load multi activity -->
+    <template repeat="{{activity in activityListInfo}}">
+      <core-ajax auto url="http://localhost:8080/shark/public/course/ajax/get" params='{"id":"{{activity.id}}"}' handleAs="json" on-core-response="{{onResponseActivityData}}"></core-ajax>
+    </template>
+    <core-scaffold id="scaffold">
+      <nav>
+        <core-toolbar><span>My menu</span></core-toolbar>
+        <core-menu id="menu" selected="Common_ChooseDifferentWord" valueattr="name" selectedModel="{{selectedActivity}}" on-core-select="{{selectMenu}}">
+          <template repeat="{{activity, i in activities}}">
+            <paper-item name="{{activity.type}}">
+              <core-icon icon="label{{selectedActivity.activity == activity ? '': '-outline'}}"></core-icon>
+              {{activity.type | shortName}}
+            </paper-item>
+          </template>
+        </core-menu>
+      </nav>
+      <core-toolbar tool flex>
+        <div flex>Activity</div>
+        <core-icon-button icon="refresh"></core-icon-button>
+        <core-icon-button icon="add"></core-icon-button>
+      </core-toolbar>
+      <div layout horizontal center-center fit>
+        <!-- Activities -->
+        <core-animated-pages id="activityPages" selected="{{selectedActivity.activity.type}}" valueattr="name" transitions="slide-from-bottom" fit>
+          <!-- Run Javascript to insert dynamically activity elements -->
+        </core-animated-pages>
+      </div>
+    </core-scaffold>
+  </template>
+  <script src="activity-app.js"></script>
+</polymer-element>

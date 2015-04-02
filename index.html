@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="img/favicon.png">
+  <title>Interaction Polymer</title>
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="bower_components/font-roboto/roboto.html">
+  <link rel="import" href="elements/activity-app.html">
+  <link rel="stylesheet" href="css/global.css" shim-shadowdom>
+</head>
+
+<body fullbleed="">
+  <template id="demo" is="auto-binding">
+    <activity-app fit vertical layout activitylistinfo="{{activityListInfo}}"></activity-app>
+  </template>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
